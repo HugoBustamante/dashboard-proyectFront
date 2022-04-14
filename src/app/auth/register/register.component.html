@@ -1,0 +1,83 @@
+<div class="hold-transition register-page">
+  <div class="register-box">
+    <div class="register-logo">
+      <a href="../../index2.html"><b>Admin</b>LTE</a>
+    </div>
+
+    <div class="card ">
+      <div class="card-body register-card-body">
+        <p class="login-box-msg">Register a new membership</p>
+
+        <!--añadimos el ngSubmit para enviar los datos del formulario al dar click y ejecutar dicho metodo "createUser"
+        y formGroup es para añadir las varaibles con los datos que tenemos para el formulario-->
+        <form (ngSubmit)="createUser()" [formGroup]="registerForm" autocomplete="off">
+
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Full name" formControlName="nombre">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user" style="color: rgb(48, 37, 37);"></span>
+              </div>
+            </div>
+          </div>
+          <!--Input para ingresar el email:-->
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Email" formControlName="email">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope" style="color: rgb(48, 37, 37);"></span>
+              </div>
+            </div>
+          </div>
+          <!--Input para ingresar la contraseña:-->
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="Password" formControlName="password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock" style="color: rgb(48, 37, 37);;"></span>
+              </div>
+            </div>
+          </div>
+          <!--Input para ingresar la contraseña de confirmación:-->
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="Retype password" formControlName="passwordValidate">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock" style="color: rgb(48, 37, 37);"></span>
+              </div>
+            </div>
+          </div>
+          <!--Vamos a insertar el select-Input para escoger el tipo de rol al registrarse:-->
+          <div class="form-group mb-3">
+            <!--Enviamos el vlaor del select en el metodo changeInputRole():-->
+            <select class="form-control" formControlName="role" (change)="changeInputRole($event)">
+                <option value="">Seleccione el rol</option>
+                <option *ngFor="let role of roles">{{ role }}</option>
+            </select>
+          </div>
+          <div class="row">
+            <div class="col-8">
+
+            </div>
+            <!-- /.col -->
+            <div class="col-4">
+              <button type="submit" class="btn btn-outline-secondary btn-block">Register</button>
+            </div>
+            <!-- /.col -->
+          </div>
+        </form>
+
+        <!-- <div class="social-auth-links text-center">
+          <hr>
+          <a href="#" class="btn btn-block btn-outline-secondary">
+            <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+          </a>
+        </div> -->
+        <!--Link para que te lleva al login en caso de ya tener una cuenta:-->
+        <a routerLink="/login" class="text-center link-reg">I already have a membership</a>
+      </div>
+      <!-- /.form-box -->
+    </div><!-- /.card -->
+  </div>
+  <!-- /.register-box -->
+</div>

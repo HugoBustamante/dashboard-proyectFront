@@ -1,0 +1,34 @@
+
+.list-item{
+  list-style: none;
+  width: 100%;
+  overflow: hidden;
+}
+
+.arrow .list-arrow{
+  transform: rotate(90deg);
+  transition: transform .3s;
+}
+.list-arrow{
+  filter: invert(100%);
+  cursor:pointer;
+}
+//Submenu:
+.list-show{
+  // width: 100%;
+  // margin: 0px;
+  // padding: 0px;
+  // border-left: 2px solid #303440;
+  // list-style: none;
+  transition: height .4s; //Esto hará que se anime cuando cambie el alto
+  height: 0;//Hacemos que el alto no exista
+
+  .nav-link__inside:hover{
+    background-color: #b3b3b3;
+  }
+}
+.container-dashboard{
+  display: flex;
+}
+
+

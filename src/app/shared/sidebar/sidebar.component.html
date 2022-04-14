@@ -1,0 +1,106 @@
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="" class="brand-link">
+    <img src="./assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">AdminLTE 3</span>
+  </a>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+          <img src="./assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+      </div>
+      <div class="info">
+          <a href="#" class="d-block">Hugo Bustamante</a>
+      </div>
+    </div>
+
+    <!-- SidebarSearch Form -->
+    <div class="form-inline">
+      <div class="input-group" data-widget="sidebar-search">
+        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-sidebar">
+            <i class="fas fa-search fa-fw"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+            with font-awesome or any other icon font library -->
+        <!--Recorremos con un ngFor la variable que contiene los datos para los iconos y el menú:-->
+        <li class="nav-item list-item" *ngFor=" let item of menuItems">
+          <div class="list-button container-dashboard list-button__click" (click)="listOfElement()">
+          <a href="#" class="nav-link"  style="cursor:pointer;">
+            <i class= {{item.icon}}></i>
+            <p>
+              {{ item.title }}
+              <span class="badge badge-primary">{{ item.submenu.length }}</span>
+            </p>
+          </a>
+          <img src="../../../assets/images/arrow.svg" class="arrow list-arrow">
+          </div>
+
+        <ul class="nav list-show">
+          <!-- <li class="nav-item" *ngFor="let itemSubMenu of item">
+            <a routerLink="usuarios" class="nav-link" style="cursor:pointer;">
+              <p>
+                <i class="fas fa-user nav-icon"></i>
+                {{ itemSubMenu.title }}
+              </p>
+            </a>
+          </li> -->
+          <!--Vamos a recorrer el sub array que contiene los datos para las rutas y los nombres del submenu:
+          Para ello recorremos directamente este subarray por medio del array item que ya recorrimos arriba
+          haciendo que este *ngFor sea un for anidado por lo que nos permitira seleccionar el sub array que contiene:-->
+          <li class="nav-item list-inside list-inside__one" *ngFor="let itemSubMenu of item.submenu">
+            <!--De forma dinamica se tomarán las rutas tanto para el submenu usuarios y el submenu productos
+            que estarian dentro del array submenu-->
+            <a [routerLink]="itemSubMenu.url" class="nav-link" style="cursor:pointer;">
+            <i class="fas fa-check nav-icon"></i>
+            <p class="nav-linking nav-link__inside">{{ itemSubMenu.title }}</p>
+            </a>
+          </li>
+        </ul>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/login" class="nav-link">
+            <i class="fas fa-sign-out-alt"></i>
+            <p>Logout</p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+
+
+    <!-- <nav class="nav">
+      <ul class="list">
+        <li class="list-item">
+              <div class="list-button list-button__click" (click)="listOfElement()">
+                <img src="../../../assets/images/dashboard.svg" class="list-img">
+                <a href="#" class="nav-linking">Dashboard</a>
+                <img src="../../../assets/images/arrow.svg" class="list-arrow">
+              </div>
+
+              <ul class="list-show">
+                <li class="list-inside list-inside__one">
+                  <img src="../../../assets/images/docs.svg" class="list-img">
+                  <a href="#" class="nav-linking nav-link__inside">Usuarios</a>
+                </li>
+              </ul>
+        </li>
+      </ul>
+    </nav> -->
+
+  </div>
+  <!-- /.sidebar -->
+</aside>
+<!-- --Main Sidebar Container-- -->
