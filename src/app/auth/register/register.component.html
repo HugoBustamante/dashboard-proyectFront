@@ -56,8 +56,14 @@
             </select>
           </div>
           <div class="row">
+            <!--Acá van aparecer las validaciones:-->
             <div class="col-8">
-
+                <div class="col text-danger">
+                  <p *ngIf="fieldsNoValidate('nombre')">El nombre es obligatorio</p>
+                  <p *ngIf="fieldsNoValidate('email')">El email es obligatorio</p>
+                  <p *ngIf="fieldsNoValidate('role')">El role es obligatorio</p>
+                  <p *ngIf="passwordNoValidate()">Las constraseñas no son iguales</p>
+                </div>
             </div>
             <!-- /.col -->
             <div class="col-4">
